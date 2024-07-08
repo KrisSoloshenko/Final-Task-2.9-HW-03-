@@ -14,11 +14,6 @@ class Author(models.Model):
         posts_rating = self.post_set.aggregate(p=Coalesce(Sum('rating'), 0))['p']
         comments_rating = self.name.comment_set.aggregate(c=Coalesce(Sum('rating'), 0))['c']
         comments_posts_rating = self.post_set.aggregate(cp=Coalesce(Sum('comment__rating'), 0))['cp']
-        print(posts_rating)
-        print("__________________")
-        print(comments_rating)
-        print("__________________")
-        print(comments_posts_rating)
 
         self.rating = posts_rating + comments_rating + comments_posts_rating * 3
         self.save()
@@ -32,7 +27,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     """Модель содержит в себе статьи и новости, которые создают пользователи.
-    Содержит связи: author, category, heading, text, rating.
+    Содержит связи: author, category
     Содержит поля: type, add_time, heading, text, rating.
     А также методы: like, dislike, preview"""
     article = "AR"
@@ -61,6 +56,9 @@ class Post(models.Model):
 
     def preview(self):
         return self.text[0:125] + '...'
+
+    def __str__(self):
+        return f'{self.heading.title()}: {self.preview()}'
 
 
 class PostCategory(models.Model):

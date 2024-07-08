@@ -1,0 +1,15 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+News
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим заголовок новости, текст новости и дату публикации, идентификатор которой был передан в url -->
+{% block content %}
+    <h1>{{ post.heading|censor }}</h1>
+    <p>{{ post.add_time|date:'d M Y' }}</p>
+    <br>
+        <p> {{ post.text|censor }} </p>
+{% endblock content %}
