@@ -1,34 +1,37 @@
-<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
 {% extends 'flatpages/default.html' %}
 {% load custom_filters %}
 
 {% block title %}
-All news
+Search
 {% endblock title %}
 
-<!-- В контенте на странице мы выводим все новости -->
-{% block content %}
-<br>
-<h2> Все новости и статьи </h2>
-<p> количество публикаций: {{ news|length }} </p>
 
-    {% if news %}
+{% block content %}
+    <br>
+    <h2>Поиск новостей</h2>
+    <p> количество публикаций: {{ post_search|length }} </p>
+    <hr>
+
+    <form action="" method="get">
+        {{ filterset.form.as_p }}
+        <input type="submit" value="Найти" />
+    </form>
+
+    {% if post_search %}
         <table width="100%" cellpadding="8px">
             <tr>
                 <td> <strong> Заголовок </strong> </td>
                 <td> <strong> Дата публикации </strong> </td>
                 <td> <strong> Содержание </strong> </td>
                 <td> <strong> Категория </strong> </td>
-                <td> <strong> Тип публикации </strong> </td>
             </tr>
-            {% for post in news %}
+            {% for post in post_search %}
             <tr>
                 <td> {{ post.heading|censor }}</td>
                 <td> {{ post.add_time|date:'d M Y' }} </td>
                 <td> {{ post.text|censor|truncatechars:21 }} </td>
                 {% for cat in post.category.all %}
                     <td> {{cat.category_name}} </td>
-                <td> {{ post.type }} </td>
                 {% endfor %}
             </tr>
             {% endfor %}

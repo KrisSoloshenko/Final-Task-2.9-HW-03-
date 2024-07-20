@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
-
+from django.urls import reverse
 
 class Author(models.Model):
     """Модель, содержащая объекты всех авторов.
@@ -18,11 +18,17 @@ class Author(models.Model):
         self.rating = posts_rating + comments_rating + comments_posts_rating * 3
         self.save()
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Category(models.Model):
     """Модель категории новостей/статей — темы, которые они отражают.
     Содержит одно поле category_name"""
     category_name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return f'{self.category_name}'
 
 
 class Post(models.Model):
@@ -60,12 +66,18 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.heading.title()}: {self.preview()}'
 
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
+
 
 class PostCategory(models.Model):
     """Промежуточная модель для связи «многие ко многим.
     Содержит связи post, category"""
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.category}: {self.post}'
 
 
 class Comment(models.Model):
