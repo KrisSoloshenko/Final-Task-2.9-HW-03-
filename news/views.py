@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.shortcuts import redirect
 
 from .models import Post
 from .filters import PostFilter
-from .forms import NewsForm, ArticleForm
+from .forms import NewsForm, ArticleForm, DeleteForm
 
 
 class PostList(ListView):
@@ -49,9 +50,6 @@ class NewsCreate(CreateView):
         post.type = "NW"
         return super().form_valid(form)
 
-    def get_object(self, **kwargs):
-        id = self.kwargs.get('pk')
-        return Post.objects.get(pk=id)
 
 # Добавляем новое представление для создания статей
 class ArticleCreate(CreateView):
@@ -73,8 +71,11 @@ class NewsUpdate(UpdateView):
 
     def form_valid(self, form):
         post = form.save(commit=False)
+        current_id = post.id
         if post.type == "NW":
-            return super().form_valid(form)
+            true_form = super().form_valid(form)
+            return true_form
+        return redirect(to=f'/news/articles/{current_id}/edit/')
 
 
 # Добавляем новое представление для редактирования статей
@@ -83,16 +84,42 @@ class ArticleUpdate(UpdateView):
     model = Post
     template_name = 'post_edit.html'
 
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        current_id = post.id
+        if post.type == "AR":
+            true_form = super().form_valid(form)
+            return true_form
+        return redirect(to=f'/news/news/{current_id}/edit/')
+
 
 # Добавляем новое представление для удаления новостей
 class NewsDelete(DeleteView):
     model = Post
+    form_class = DeleteForm
     template_name = 'post_delete.html'
     success_url = reverse_lazy('post_list')
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        current_id = self.object.id
+        if self.object.type == "NW":
+            true_form = super().form_valid(form)
+            return true_form
+        return redirect(to=f'/news/articles/{current_id}/delete/')
 
 
 # Добавляем новое представление для удаления статей
 class ArticleDelete(DeleteView):
     model = Post
+    form_class = DeleteForm
     template_name = 'post_delete.html'
     success_url = reverse_lazy('post_list')
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        current_id = self.object.id
+        if self.object.type == "AR":
+            true_form = super().form_valid(form)
+            return true_form
+        return redirect(to=f'/news/news/{current_id}/delete/')

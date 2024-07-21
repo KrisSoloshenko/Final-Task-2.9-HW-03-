@@ -50,3 +50,9 @@ class ArticleForm(forms.ModelForm):
             )
 
         return cleaned_data
+
+
+class DeleteForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = []
