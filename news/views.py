@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from .models import Post
 from .filters import PostFilter
@@ -40,7 +41,8 @@ class PostSearch(ListView):
 
 
 # Добавляем новое представление для создания новостей
-class NewsCreate(CreateView):
+class NewsCreate(PermissionRequiredMixin, CreateView):
+    permission_required = ('news.add_post',)
     form_class = NewsForm
     model = Post
     template_name = 'post_create.html'
@@ -52,7 +54,8 @@ class NewsCreate(CreateView):
 
 
 # Добавляем новое представление для создания статей
-class ArticleCreate(CreateView):
+class ArticleCreate(PermissionRequiredMixin, CreateView):
+    permission_required = ('news.add_post',)
     form_class = ArticleForm
     model = Post
     template_name = 'post_create.html'
@@ -64,7 +67,8 @@ class ArticleCreate(CreateView):
 
 
 # Добавляем новое представление для редактирования новостей
-class NewsUpdate(UpdateView):
+class NewsUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = ('news.change_post',)
     form_class = NewsForm
     model = Post
     template_name = 'post_edit.html'
@@ -79,7 +83,8 @@ class NewsUpdate(UpdateView):
 
 
 # Добавляем новое представление для редактирования статей
-class ArticleUpdate(UpdateView):
+class ArticleUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = ('news.change_post',)
     form_class = ArticleForm
     model = Post
     template_name = 'post_edit.html'
@@ -94,7 +99,8 @@ class ArticleUpdate(UpdateView):
 
 
 # Добавляем новое представление для удаления новостей
-class NewsDelete(DeleteView):
+class NewsDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = ('news.delete_post',)
     model = Post
     form_class = DeleteForm
     template_name = 'post_delete.html'
@@ -110,7 +116,8 @@ class NewsDelete(DeleteView):
 
 
 # Добавляем новое представление для удаления статей
-class ArticleDelete(DeleteView):
+class ArticleDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = ('news.delete_post',)
     model = Post
     form_class = DeleteForm
     template_name = 'post_delete.html'

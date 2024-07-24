@@ -11,25 +11,54 @@ All news
 <br>
 <h2> Все новости и статьи </h2>
 <p> количество публикаций: {{ news|length }} </p>
-
+    {% if perms.news.add_post %}
+    <a href="{% url 'news_create' %}">Добавить новость |</a>
+    <a href="{% url 'article_create' %}">Добавить статью</a>
+    {% endif %}
+<br>
+<br>
     {% if news %}
         <table width="100%" cellpadding="8px">
             <tr>
                 <td> <strong> Заголовок </strong> </td>
                 <td> <strong> Дата публикации </strong> </td>
                 <td> <strong> Содержание </strong> </td>
+                {% if perms.news.change_post or perms.news.delete_post %}
+                <td> <strong> Действия </strong> </td>
+                {% endif %}
                 <td> <strong> Категория </strong> </td>
-                <td> <strong> Тип публикации </strong> </td>
+
             </tr>
             {% for post in news %}
             <tr>
                 <td> {{ post.heading|censor }}</td>
                 <td> {{ post.add_time|date:'d M Y' }} </td>
                 <td> {{ post.text|censor|truncatechars:21 }} </td>
+                <td>
+                    {% if perms.news.change_post %}
+                        {% if post.type == "NW" %}
+                            <a href="{% url 'news_edit' pk=post.id %}">Изменить</a><br/>
+                        {% endif %}
+
+                        {% if post.type == "AR" %}
+                            <a href="{% url 'article_edit' pk=post.id %}">Изменить</a><br/>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if perms.news.delete_post %}
+                        {% if post.type == "NW" %}
+                            <a href="{% url 'news_delete' pk=post.id %}">Удалить</a>
+                        {% endif %}
+
+                        {% if post.type == "AR" %}
+                            <a href="{% url 'article_delete' pk=post.id %}">Удалить</a>
+                        {% endif %}
+                    {% endif %}
+                </td>
                 {% for cat in post.category.all %}
-                    <td> {{cat.category_name}} </td>
-                <td> {{ post.type }} </td>
+                    <td> {{cat.category_name }} </td>
                 {% endfor %}
+
             </tr>
             {% endfor %}
         </table>
