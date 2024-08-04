@@ -10,9 +10,9 @@ class NewsForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
-            'author',
             'heading',
             'text',
+            'category',
         ]
 
     def clean(self):
@@ -34,9 +34,9 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
-            'author',
             'heading',
             'text',
+            'category',
         ]
 
     def clean(self):

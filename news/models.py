@@ -44,7 +44,7 @@ class Post(models.Model):
         (news, 'Новость')
     ]
 
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=2, choices=TYPES, default=article)
     add_time = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField(Category, through='PostCategory')
@@ -98,3 +98,13 @@ class Comment(models.Model):
     def dislike(self):
         self.rating -= 1
         self.save()
+
+
+class Subscriber(models.Model):
+    """Промежуточная модель для связи «многие ко многим.
+    Содержит связи post, category"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='subscriptions')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='subscriptions')
+
+    def __str__(self):
+        return f'{self.user}: {self.category}'
