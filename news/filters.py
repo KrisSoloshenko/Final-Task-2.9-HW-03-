@@ -2,11 +2,9 @@ import django_filters
 from django_filters import FilterSet
 from django.forms import DateTimeInput
 
-
 from .models import Post
 
 
-# Создаем свой набор фильтров для модели Post.
 class PostFilter(FilterSet):
     after_add = django_filters.DateTimeFilter(
         field_name='add_time',

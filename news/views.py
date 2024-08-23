@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Exists, OuterRef
 from django.views.decorators.csrf import csrf_protect
 
-
 from .models import Post, Category, Subscriber
 from .filters import PostFilter
 from .forms import NewsForm, ArticleForm, DeleteForm
@@ -44,7 +43,6 @@ class PostSearch(ListView):
         return context
 
 
-# Добавляем новое представление для создания новостей
 class NewsCreate(PermissionRequiredMixin, CreateView):
     permission_required = ('news.add_post',)
     form_class = NewsForm
@@ -58,7 +56,6 @@ class NewsCreate(PermissionRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-# Добавляем новое представление для создания статей
 class ArticleCreate(PermissionRequiredMixin, CreateView):
     permission_required = ('news.add_post',)
     form_class = ArticleForm
@@ -72,7 +69,6 @@ class ArticleCreate(PermissionRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-# Добавляем новое представление для редактирования новостей
 class NewsUpdate(PermissionRequiredMixin, UpdateView):
     permission_required = ('news.change_post',)
     form_class = NewsForm
@@ -88,7 +84,6 @@ class NewsUpdate(PermissionRequiredMixin, UpdateView):
         return redirect(to=f'/news/articles/{current_id}/edit/')
 
 
-# Добавляем новое представление для редактирования статей
 class ArticleUpdate(PermissionRequiredMixin, UpdateView):
     permission_required = ('news.change_post',)
     form_class = ArticleForm
@@ -104,7 +99,6 @@ class ArticleUpdate(PermissionRequiredMixin, UpdateView):
         return redirect(to=f'/news/news/{current_id}/edit/')
 
 
-# Добавляем новое представление для удаления новостей
 class NewsDelete(PermissionRequiredMixin, DeleteView):
     permission_required = ('news.delete_post',)
     model = Post
@@ -121,7 +115,6 @@ class NewsDelete(PermissionRequiredMixin, DeleteView):
         return redirect(to=f'/news/articles/{current_id}/delete/')
 
 
-# Добавляем новое представление для удаления статей
 class ArticleDelete(PermissionRequiredMixin, DeleteView):
     permission_required = ('news.delete_post',)
     model = Post
