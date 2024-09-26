@@ -66,7 +66,7 @@ class Post(models.Model):
         return self.text[0:125] + '...'
 
     def __str__(self):
-        return f'{self.heading.title()}: {self.preview()}'
+        return f'{self.heading.title()}'
 
     def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.id)])

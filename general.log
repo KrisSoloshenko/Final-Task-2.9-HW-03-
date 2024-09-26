@@ -1,0 +1,5 @@
+2024-09-26 17:47:03,782 WARNING Not Found: / c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\utils\log.py None
+2024-09-26 17:48:19,461 WARNING Not Found: / c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\utils\log.py None
+2024-09-26 17:48:19,462 WARNING "GET / HTTP/1.1" 404 2277 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 17:55:28,417 INFO autoreload Watching for file changes with StatReloader
+2024-09-26 17:58:46,242 INFO autoreload C:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\News-Portal-project\NewsPortal\settings.py changed, reloading.

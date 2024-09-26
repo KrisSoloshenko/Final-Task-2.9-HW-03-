@@ -1,0 +1,18 @@
+2024-09-26 17:51:12,133 WARNING Not Found: / c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\utils\log.py None
+2024-09-26 17:51:12,133 WARNING "GET / HTTP/1.1" 404 2277 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:26:28,735 WARNING Not Found: / c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\utils\log.py None
+2024-09-26 18:26:28,735 WARNING "GET / HTTP/1.1" 404 2277 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:28:42,246 WARNING Not Found: / c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\utils\log.py None
+2024-09-26 18:28:42,250 WARNING "GET / HTTP/1.1" 404 2277 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:28:44,300 WARNING Not Found: / c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\utils\log.py None
+2024-09-26 18:28:44,301 WARNING "GET / HTTP/1.1" 404 2277 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:29:59,202 WARNING Not Found: / c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\utils\log.py None
+2024-09-26 18:29:59,202 WARNING "GET / HTTP/1.1" 404 2277 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:30:25,804 INFO "GET /news/ HTTP/1.1" 200 7682 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:30:28,113 INFO "GET /accounts/logout/ HTTP/1.1" 302 0 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:30:28,122 WARNING Not Found: / c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\utils\log.py None
+2024-09-26 18:30:28,123 WARNING "GET / HTTP/1.1" 404 2277 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:30:36,365 INFO "GET /admin/ HTTP/1.1" 302 0 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:30:36,385 INFO "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:30:41,895 INFO "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-09-26 18:30:41,917 INFO "GET /admin/ HTTP/1.1" 200 16220 c:\Users\Кристина\Desktop\общая\phyton\VS_Projects\Module D\.venv\Lib\site-packages\django\core\servers\basehttp.py None
