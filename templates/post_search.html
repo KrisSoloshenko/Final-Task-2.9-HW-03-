@@ -1,29 +1,30 @@
 {% extends 'flatpages/default.html' %}
 {% load custom_filters %}
+{% load i18n %}
 
 {% block title %}
-Search
+{% trans "Search"%}
 {% endblock title %}
 
 
 {% block content %}
     <br>
-    <h2>Поиск новостей</h2>
-    <p> количество публикаций: {{ post_search|length }} </p>
+    <h2>{% trans "Поиск новостей"%} </h2>
+    <p>{% trans "количество публикаций" %} : {{ post_search|length }} </p>
     <hr>
 
     <form action="" method="get">
         {{ filterset.form.as_p }}
-        <input type="submit" value="Найти" />
+        <input type="submit" value="{% trans 'Найти' %}"/>
     </form>
 
     {% if post_search %}
         <table width="100%" cellpadding="8px">
             <tr>
-                <td> <strong> Заголовок </strong> </td>
-                <td> <strong> Дата публикации </strong> </td>
-                <td> <strong> Содержание </strong> </td>
-                <td> <strong> Категория </strong> </td>
+                <td> <strong> {% trans "Заголовок" %} </strong> </td>
+                <td> <strong> {% trans "Дата публикации" %} </strong> </td>
+                <td> <strong> {% trans "Содержание" %} </strong> </td>
+                <td> <strong> {% trans "Категория" %} </strong> </td>
             </tr>
             {% for post in post_search %}
             <tr>
@@ -37,8 +38,7 @@ Search
             {% endfor %}
         </table>
     {% else %}
-       <!-- Если новостей нет, говорим, что их нет ;) -->
-        <h2>Новостей нет!</h2>
+        <h2>{% trans "Новостей нет!"%}</h2>
     {% endif %}
     {% if page_obj.has_previous %}
        <a href="?{% url_replace page=1 %}">1</a>

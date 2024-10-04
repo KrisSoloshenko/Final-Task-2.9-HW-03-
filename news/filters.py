@@ -7,8 +7,8 @@ from .models import Post
 
 class PostFilter(FilterSet):
     after_add = django_filters.DateTimeFilter(
-        field_name='add_time',
-        lookup_expr='gt',
+        field_name=('add_time'),
+        lookup_expr=('gt'),
         widget=DateTimeInput(
             format='%Y-%m-%dT%H:%M',
             attrs={'type': 'datetime-local'}

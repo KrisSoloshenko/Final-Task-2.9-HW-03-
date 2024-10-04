@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-03 18:25+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\fpages\admin.py:11
+msgid "Advanced options"
+msgstr "Advanced options"
+
+#: .\templates\403.html:6
+msgid "Ошибка 403"
+msgstr "Error 403"
+
+#: .\templates\403.html:9
+msgid "Кажется, у Вас нет доступа к данной странице..."
+msgstr "Sorry, you do not have access to this page..."
+
+#: .\templates\flatpages\default.html:22
+msgid "News Portal"
+msgstr "News Portal"
+
+#: .\templates\flatpages\default.html:34
+msgid "Home"
+msgstr "Home"
+
+#: .\templates\flatpages\default.html:37 .\templates\post_search.html:6
+msgid "Search"
+msgstr "Search"
+
+#: .\templates\flatpages\default.html:40 .\templates\subscriptions.html:5
+msgid "Subscriptions"
+msgstr "Subscriptions"
+
+#: .\templates\flatpages\default.html:43
+msgid "Admin"
+msgstr "Admin"
+
+#: .\templates\flatpages\default.html:47
+msgid "Log out"
+msgstr "Log out"
+
+#: .\templates\flatpages\default.html:67
+msgid "select"
+msgstr "select"
+
+#: .\templates\news.html:7
+msgid "All news"
+msgstr "All news"
+
+#: .\templates\news.html:13
+msgid "Все новости и статьи"
+msgstr "All news and articles"
+
+#: .\templates\news.html:14 .\templates\post_search.html:13
+msgid "количество публикаций"
+msgstr "number of publications"
+
+#: .\templates\news.html:16
+msgid "Добавить новость"
+msgstr "Add a news item"
+
+#: .\templates\news.html:17
+msgid "Добавить статью"
+msgstr "Add an article"
+
+#: .\templates\news.html:24 .\templates\post_search.html:24
+msgid "Заголовок"
+msgstr "Heading"
+
+#: .\templates\news.html:25 .\templates\post_search.html:25
+msgid "Дата публикации"
+msgstr "Date of publication"
+
+#: .\templates\news.html:26 .\templates\post_search.html:26
+msgid "Содержание"
+msgstr "Content"
+
+#: .\templates\news.html:28
+msgid "Действия"
+msgstr "Actions"
+
+#: .\templates\news.html:30 .\templates\post_search.html:27
+msgid "Категория"
+msgstr "Category"
+
+#: .\templates\news.html:41 .\templates\news.html:45
+msgid "Изменить"
+msgstr "Change"
+
+#: .\templates\news.html:51 .\templates\news.html:55
+msgid "Удалить"
+msgstr "Delete"
+
+#: .\templates\news.html:68 .\templates\post_search.html:41
+msgid "Новостей нет!"
+msgstr "There is no news!"
+
+#: .\templates\post.html:6
+msgid "News"
+msgstr "News"
+
+#: .\templates\post_create.html:5
+msgid "Создание публикации"
+msgstr "Creating a post"
+
+#: .\templates\post_create.html:10 .\templates\post_edit.html:10
+msgid "Save"
+msgstr "Save"
+
+#: .\templates\post_delete.html:5
+msgid "Удаление публикации"
+msgstr "Deleting a post"
+
+#: .\templates\post_delete.html:10
+msgid "Удаляем"
+msgstr "Are we deleting"
+
+#: .\templates\post_delete.html:11
+msgid "Delete"
+msgstr "Delete"
+
+#: .\templates\post_edit.html:5
+msgid "Редактировать публикацию"
+msgstr "Edit a post"
+
+#: .\templates\post_search.html:12
+msgid "Поиск новостей"
+msgstr "News Search"
+
+#: .\templates\post_search.html:18
+msgid "Найти"
+msgstr "Search"
+
+#: .\templates\subscriptions.html:17 .\templates\subscriptions.html:20
+msgid "Подписаться"
+msgstr "Subscribe"
+
+#: .\templates\subscriptions.html:18 .\templates\subscriptions.html:21
+msgid "Отписаться"
+msgstr "Unsubscribe"

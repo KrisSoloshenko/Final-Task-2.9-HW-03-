@@ -1,12 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.shortcuts import redirect
+from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.db.models import Exists, OuterRef
 from django.views.decorators.csrf import csrf_protect
 from django.core.cache import cache
+from django.http import HttpResponse
+from django.utils.translation import gettext as _
+from django.utils import timezone
+
+import pytz
 
 from .models import Post, Category, Subscriber
 from .filters import PostFilter
@@ -19,6 +23,16 @@ class PostList(ListView):
     context_object_name = 'news'
     ordering = '-add_time'
     paginate_by = 10
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
+        return context
+    
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect(self.request.META['HTTP_REFERER'])
 
 
 class PostDetail(DetailView):
@@ -34,6 +48,16 @@ class PostDetail(DetailView):
             obj = super().get_object(queryset=self.queryset)
             cache.set(f'post-{self.kwargs["pk"]}', obj)
         return obj
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
+        return context
+    
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect(self.request.META['HTTP_REFERER'])
 
 
 class PostSearch(ListView):
@@ -50,7 +74,13 @@ class PostSearch(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
         return context
+    
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect(self.request.META['HTTP_REFERER'])
 
 
 class NewsCreate(PermissionRequiredMixin, CreateView):

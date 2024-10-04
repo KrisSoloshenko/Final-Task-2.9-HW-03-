@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Post, Category, PostCategory, Subscriber
+from modeltranslation.admin import TranslationAdmin
 
 
 def nullfy_rating(modeladmin, request, queryset):
@@ -16,11 +17,16 @@ class PostAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('pk', 'category_name')
     
-
+    
+class TranslationCategoryAdmin(TranslationAdmin):
+    model = Category
+    
 class PostCategoryAdmin(admin.ModelAdmin):
     list_display = ('pk', 'post', 'category')
     
-
+class TranslationPostAdmin(TranslationAdmin):
+    model = Post
+    
 class SubscriberAdmin(admin.ModelAdmin):
     list_display = ('pk', 'user', 'category')
 
@@ -29,4 +35,3 @@ admin.site.register(Post, PostAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(PostCategory, PostCategoryAdmin)
 admin.site.register(Subscriber, SubscriberAdmin)
-
