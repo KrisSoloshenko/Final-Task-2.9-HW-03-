@@ -5,7 +5,6 @@ from .models import Post
 
 
 class NewsForm(forms.ModelForm):
-    heading = forms.CharField(max_length=255)
 
     class Meta:
         model = Post
@@ -29,7 +28,6 @@ class NewsForm(forms.ModelForm):
 
 
 class ArticleForm(forms.ModelForm):
-    heading = forms.CharField(max_length=255)
 
     class Meta:
         model = Post

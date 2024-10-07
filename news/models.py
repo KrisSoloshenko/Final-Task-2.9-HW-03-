@@ -4,6 +4,7 @@ from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.urls import reverse
 from django.core.cache import cache
+from django.utils.translation import pgettext_lazy
 
 
 class Author(models.Model):
@@ -48,10 +49,10 @@ class Post(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=2, choices=TYPES, default=article)
-    add_time = models.DateTimeField(auto_now_add=True)
-    category = models.ManyToManyField(Category, through='PostCategory')
-    heading = models.CharField(max_length=255)
-    text = models.TextField()
+    add_time = models.DateTimeField(auto_now_add=True, verbose_name=pgettext_lazy('add_time', 'time of addition'))
+    category = models.ManyToManyField(Category, through='PostCategory', verbose_name=pgettext_lazy('', 'category'))
+    heading = models.CharField(max_length=255, verbose_name=pgettext_lazy('', 'heading'))
+    text = models.TextField(verbose_name=pgettext_lazy('', 'text'))
     rating = models.IntegerField(default=0)
 
     def like(self):
